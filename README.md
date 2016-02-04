@@ -2,6 +2,8 @@
 
 dess is a Go package for decimal numbers.
 
+This is a work in progress. Not all tests pass. Do not use this yet.
+
 ## Installation
 
 `go get github.com/kochman/dess`
