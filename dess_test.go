@@ -12,8 +12,18 @@ func TestDecimalString(t *testing.T) {
 		t.Error(decimal.String())
 	}
 
+	decimal = NewDecimal(4567, 3)
+	if decimal.String() != "4.567" {
+		t.Error(decimal.String())
+	}
+
 	decimal = NewDecimal(0, 45)
 	if decimal.String() != "0.0" {
+		t.Error(decimal.String())
+	}
+
+	decimal = NewDecimal(445, 3)
+	if decimal.String() != "0.445" {
 		t.Error(decimal.String())
 	}
 
@@ -59,6 +69,16 @@ func TestDecimalAdd(t *testing.T) {
 	}
 }
 
+func TestDecimalChaining(t *testing.T) {
+	d1 := NewDecimal(4567, 2)
+	d2 := NewDecimal(2345, 3)
+	d3 := NewDecimal(19, 1)
+	res := d1.Add(d2).Sub(d3)
+	if res.String() != "46.115" {
+		t.Error(res.String())
+	}
+}
+
 func TestDecimalEquals(t *testing.T) {
 	d1 := NewDecimal(4567, 2)
 	d2 := NewDecimal(2345, 2)
@@ -88,6 +108,14 @@ func TestDecimalSubtract(t *testing.T) {
 	}
 	decimal = d2.Sub(d1)
 	if decimal.String() != "18.883" {
+		t.Error(decimal.String())
+	}
+
+	d1 = NewDecimal(2345, 3)
+	d2 = NewDecimal(19, 1)
+	decimal = d1.Sub(d2)
+	if decimal.String() != "0.445" {
+		t.Error(decimal.exponent)
 		t.Error(decimal.String())
 	}
 }
