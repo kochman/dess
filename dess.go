@@ -6,7 +6,7 @@ import (
 
 type Decimal struct {
 	coefficient *big.Int
-	exponent int64
+	exponent    int64
 }
 
 // pow returns an int64 of base raised to power. The math package
@@ -17,7 +17,7 @@ func pow(base, power int64) int64 {
 	} else if power == 1 {
 		return base
 	} else {
-		return base * pow(base, power - 1)
+		return base * pow(base, power-1)
 	}
 }
 
